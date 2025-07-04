@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solipago</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-symbol"></div>
+                <span class="brand-text">Solipago</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-item" data-i18n="nav_home">Inicio</a>
+                <a href="#craft" class="nav-item" data-i18n="nav_craft">La Experiencia</a>
+                <a href="#work" class="nav-item" data-i18n="nav_work">Proyectos</a>
+                <a href="#connect" class="nav-item" data-i18n="nav_connect">Contacto</a>
+            </div>
+            <button id="lang-toggle" class="nav-item" style="background:none;border:none;cursor:pointer;font-weight:600;font-size:1rem;">EN</button>
+            <button id="theme-toggle" class="nav-item theme-toggle" style="background:none;border:none;cursor:pointer;font-weight:600;font-size:1rem;">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <div class="nav-toggle">
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title" data-i18n="hero_title">
+                            <span class="title-word">Solipago</span>
+                            
+                        </h1>
+                        <p class="hero-description" data-i18n="hero_desc">Donde la precisión se encuentra con la innovación en desarrollo web</p>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="action-primary" data-i18n="hero_cta_primary">Comenzar Proyecto</button>
+                        <button class="action-secondary" data-i18n="hero_cta_secondary">Ver Proyectos</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="geometric-composition">
+                        <div class="geo-element geo-1"></div>
+                        <div class="geo-element geo-2"></div>
+                        <div class="geo-element geo-3"></div>
+                        <div class="geo-element geo-4"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span class="scroll-text" data-i18n="scroll">Desliza</span>
+            </div>
+        </section>
+
+        <!-- Craft Section -->
+        <section id="craft" class="craft">
+            <div class="section-container">
+                <div class="section-intro">
+                    <h2 class="section-title" data-i18n="craft_title">La Experiencia</h2>
+                    <p class="section-subtitle" data-i18n="craft_subtitle">Tres pilares de excelencia digital</p>
+                </div>
+                <div class="craft-grid">
+                    <div class="craft-item" data-craft="development">
+                        <div class="craft-number">01</div>
+                        <div class="craft-content">
+                            <h3 data-i18n="craft_dev_title">Desarrollo</h3>
+                            <p data-i18n="craft_dev_desc">Arquitectura de soluciones robustas y escalables con tecnologías de vanguardia</p>
+                            <div class="craft-tools">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>TypeScript</span>
+                            </div>
+                        </div>
+                        <div class="craft-visual">
+                            <div class="code-lines">
+                                <div class="code-line"></div>
+                                <div class="code-line"></div>
+                                <div class="code-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="craft-item" data-craft="design">
+                        <div class="craft-number">02</div>
+                        <div class="craft-content">
+                            <h3 data-i18n="craft_design_title">Diseño</h3>
+                            <p data-i18n="craft_design_desc">Creamos experiencias intuitivas que conectan con los usuarios</p>
+                            <div class="craft-tools">
+                                <span>Figma</span>
+                                <span>Prototipado</span>
+                                <span>Investigación</span>
+                            </div>
+                        </div>
+                        <div class="craft-visual">
+                            <div class="design-elements">
+                                <div class="design-element"></div>
+                                <div class="design-element"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="craft-item" data-craft="optimization">
+                        <div class="craft-number">03</div>
+                        <div class="craft-content">
+                            <h3 data-i18n="craft_opt_title">Asesoría</h3>
+                            <p data-i18n="craft_opt_desc">Asesoría en desarrollo web y optimización de sitios web</p>
+                            <div class="craft-tools">
+                                <span>SEO</span>
+                                <span>Analytics</span>
+                                <span>Monitoreo</span>
+                            </div>
+                        </div>
+                        <div class="craft-visual">
+                            <div class="performance-graph">
+                                <div class="graph-line"></div>
+                                <div class="graph-point"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="work">
+            <div class="section-container">
+                <div class="section-intro">
+                    <h2 class="section-title" data-i18n="work_title">Proyectos Seleccionados</h2>
+                    <p class="section-subtitle" data-i18n="work_subtitle">Proyectos que definen nuestro enfoque</p>
+                </div>
+                <div class="work-showcase">
+                    <div class="work-item" data-project="1">
+                        <div class="work-preview">
+                            <div class="work-image">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <div class="work-overlay">
+                                <div class="work-details">
+                                    <h3 data-i18n="work1_title">Plataforma E-Commerce</h3>
+                                    <p data-i18n="work1_desc">Tienda online moderna con experiencia de usuario fluida</p>
+                                    <div class="work-tech">
+                                        <span>React</span>
+                                        <span>Stripe</span>
+                                        <span>Node.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item" data-project="2">
+                        <div class="work-preview">
+                            <div class="work-image">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <div class="work-overlay">
+                                <div class="work-details">
+                                    <h3 data-i18n="work2_title">Sitio Portfolio</h3>
+                                    <p data-i18n="work2_desc">Diseño minimalista para profesionales creativos</p>
+                                    <div class="work-tech">
+                                        <span>Vue.js</span>
+                                        <span>GSAP</span>
+                                        <span>Three.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item" data-project="3">
+                        <div class="work-preview">
+                            <div class="work-image">
+                                <div class="image-overlay"></div>
+                            </div>
+                            <div class="work-overlay">
+                                <div class="work-details">
+                                    <h3 data-i18n="work3_title">Aplicación Dashboard</h3>
+                                    <p data-i18n="work3_desc">Plataforma de visualización y análisis de datos</p>
+                                    <div class="work-tech">
+                                        <span>Angular</span>
+                                        <span>D3.js</span>
+                                        <span>Python</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect Section -->
+        <section id="connect" class="connect">
+            <div class="section-container">
+                <div class="connect-content">
+                    <div class="connect-info">
+                        <h2 data-i18n="connect_title">Creemos Juntos</h2>
+                        <p data-i18n="connect_desc">¿Listo para transformar tu presencia digital? Conversemos sobre tu visión y hagámosla realidad.</p>
+                        <div class="connect-details">
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="connect_email_label">Email</span>
+                                <a href="Micaela@solipago.com" class="detail-value">Micaela@solipago.com</a>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="connect_location_label">Ubicación</span>
+                                <span class="detail-value" data-i18n="connect_location_value">Global</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="connect-form">
+                        <form class="contact-form">
+                            <div class="form-field">
+                                <input type="text" id="name" name="name" required>
+                                <label for="name" data-i18n="form_name">Nombre</label>
+                                <div class="field-line"></div>
+                            </div>
+                            <div class="form-field">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email" data-i18n="form_email">Correo electrónico</label>
+                                <div class="field-line"></div>
+                            </div>
+                            <div class="form-field">
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message" data-i18n="form_message">Mensaje</label>
+                                <div class="field-line"></div>
+                            </div>
+                            <button type="submit" class="submit-button">
+                                <span class="button-text" data-i18n="form_send">Enviar Mensaje</span>
+                                <div class="button-arrow"></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-symbol"></div>
+                    <span class="brand-text">Solipago</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#home" data-i18n="nav_home">Inicio</a>
+                    <a href="#craft" data-i18n="nav_craft">La Experiencia</a>
+                    <a href="#work" data-i18n="nav_work">Proyectos</a>
+                    <a href="#connect" data-i18n="nav_connect">Contacto</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">LinkedIn</a>
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dev Ty. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
