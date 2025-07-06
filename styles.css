@@ -692,6 +692,62 @@ body {
     color: var(--accent-primary);
 }
 
+.connect-actions {
+    margin-top: 2rem;
+}
+
+.calendar-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+}
+
+.calendar-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+.calendar-button .button-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.calendar-button .button-arrow {
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.calendar-button .button-arrow::before {
+    content: '→';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+}
+
+.calendar-button:hover .button-arrow {
+    transform: translateX(3px);
+}
+
 /* Contact Form */
 .contact-form {
     display: flex;
