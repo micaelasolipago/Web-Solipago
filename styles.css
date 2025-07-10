@@ -1061,7 +1061,8 @@ body {
   }
   .card-content {
     opacity: 1 !important;
-    position: static;
-    padding: 1.5rem;
+    pointer-events: auto !important;
+    position: static !important;
+    transition: none !important;
   }
 } 
