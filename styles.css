@@ -587,16 +587,23 @@ body {
     opacity: 1;
 }
 
+.work-showcase .work-item .work-preview .work-overlay {
+  background: linear-gradient(135deg, #3162b7, #142c6e) !important;
+  color: #fff !important;
+  opacity: 1 !important;
+  border-radius: 16px !important;
+}
+
 @media (max-width: 900px) {
-    .work-overlay {
-        background: linear-gradient(135deg, #3162b7, #142c6e) !important;
-        color: #fff !important;
-        position: static;
-        padding: 1.5rem;
-    }
-    .work-image {
-        display: none;
-    }
+  .work-showcase .work-item .work-preview .work-overlay {
+    background: linear-gradient(135deg, #3162b7, #142c6e) !important;
+    color: #fff !important;
+    opacity: 1 !important;
+    border-radius: 16px !important;
+  }
+  .work-showcase .work-item .work-preview .work-image {
+    display: none !important;
+  }
 }
 
 .work-item:hover {
