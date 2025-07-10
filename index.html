@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init('vJWS9-xxIjLpgqETA');
+       })();
+    </script>
 </head>
 <body>
     <!-- Custom Cursor -->
@@ -273,6 +279,116 @@
         </div>
     </footer>
 
+    <script src="email-config.js"></script>
+    <script src="email-service.js"></script>
     <script src="script.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+let contactosGoogle = [];
+
+function authenticate() {
+  return gapi.auth2.getAuthInstance()
+      .signIn({scope: "https://www.googleapis.com/auth/contacts.readonly"})
+      .then(function() { console.log("Sign-in successful"); },
+            function(err) { console.error("Error signing in", err); });
+}
+function loadClient() {
+  return gapi.client.load("https://people.googleapis.com/$discovery/rest?version=v1")
+      .then(function() { console.log("GAPI client loaded for API"); },
+            function(err) { console.error("Error loading GAPI client for API", err); });
+}
+function listConnections() {
+  return gapi.client.people.people.connections.list({
+    "resourceName": "people/me",
+    "pageSize": 2000,
+    "personFields": "names,emailAddresses"
+  })
+      .then(function(response) {
+              const connections = response.result.connections || [];
+              contactosGoogle = connections
+                .filter(c => c.emailAddresses && c.emailAddresses.length)
+                .map(c => ({
+                  name: c.names && c.names.length ? c.names[0].displayName : 'Sin nombre',
+                  email: c.emailAddresses[0].value
+                }));
+              console.log('Contactos obtenidos:', contactosGoogle);
+              alert('Contactos de Google cargados: ' + contactosGoogle.length);
+            },
+            function(err) { console.error("Execute error", err); });
+}
+gapi.load("client:auth2", function() {
+  gapi.auth2.init({client_id: "180098021074-na57tn44rt0dlcfup00s11hbnjh37veu.apps.googleusercontent.com"});
+});
+
+const mensajePropuesta = `
+Un placer comunicarnos con ustedes.
+
+Somos una empresa de tecnología con visión de negocio y experiencia en empresas Industriales y de Servicios.
+
+En caso de que tengan la percepción de que alguna herramienta digital podría optimizar alguno de sus procesos, les ofrecemos:
+- Reunión virtual de 45 minutos.
+- Reporte que detalle si existen herramientas en el mercado que se ajusten a sus necesidades o si bien es necesario un desarrollo ad-hoc.
+
+"Si tomamos el mercado global, podemos asegurar que hay muchas herramientas que ayudan a optimizar todo tipo de procesos y con precios muy accesibles"
+
+La propuesta es totalmente gratuita y el objetivo es sólo que nos tengan en cuenta si, en el futuro, optan por alguna de las siguientes opciones:
+- Búsqueda de la mejor herramienta para ustedes. Este proceso se divide en relevamiento global, prueba de concepto offline y prueba de concepto online.
+- O bien para el desarrollo de una herramienta ad-hoc.
+
+En caso de estar interesados no duden en contactarse con nosotros o directamente agendar una cita en www.solipago.com. 
+
+Muchas gracias
+
+Micaela Juarez
+Responsable Comercial.-
+`;
+
+function enviarMailsGoogle() {
+  if (!contactosGoogle.length) {
+    alert('Primero debes cargar los contactos de Google.');
+    return;
+  }
+  contactosGoogle.forEach((contacto, idx) => {
+    setTimeout(() => {
+      const templateParams = {
+        to_name: contacto.name,
+        to_email: contacto.email,
+        message: mensajePropuesta
+      };
+      emailjs.send('service_g9miodp', 'template_f7644tn', templateParams)
+        .then(function(response) {
+          console.log('Email enviado a:', contacto.email);
+        }, function(error) {
+          console.error('Error al enviar a', contacto.email, error);
+        });
+    }, idx * 2000); // Espera 2 segundos entre cada envío
+  });
+}
+</script>
+<div style="margin: 2rem 0; text-align: center;">
+  <button onclick="authenticate().then(loadClient())">Conectar Google</button>
+  <button onclick="listConnections()">Obtener contactos</button>
+  <button onclick="enviarMailsGoogle()">Enviar propuesta a contactos Google</button>
+</div>
+<div class="cards-container">
+  <div class="card">
+    <div class="card-content">
+      <h3>Soluciones Web</h3>
+      <p>Desarrollo de plataformas a medida para tu empresa.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-content">
+      <h3>Automatización</h3>
+      <p>Automatizamos procesos y comunicaciones empresariales.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-content">
+      <h3>Consultoría</h3>
+      <p>Asesoría en transformación digital y optimización de recursos.</p>
+    </div>
+  </div>
+</div>
 </body>
 </html> 
