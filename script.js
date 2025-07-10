@@ -71,27 +71,27 @@ if (navToggle && navMenu) {
 // Auto-show mobile navigation on scroll
 let lastScrollTop = 0;
 let scrollTimeout;
-window.addEventListener('scroll', () => {
-    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const isMobile = window.innerWidth <= 768;
+// window.addEventListener('scroll', () => {
+//     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+//     const isMobile = window.innerWidth <= 768;
     
-    if (isMobile && navMenu && navToggle) {
-        // Clear existing timeout
-        clearTimeout(scrollTimeout);
+//     if (isMobile && navMenu && navToggle) {
+//         // Clear existing timeout
+//         clearTimeout(scrollTimeout);
         
-        // Show navigation immediately on scroll
-        navMenu.classList.add('active');
-        navToggle.classList.add('active');
+//         // Show navigation immediately on scroll
+//         navMenu.classList.add('active');
+//         navToggle.classList.add('active');
         
-        // Hide navigation after 3 seconds of no scrolling
-        scrollTimeout = setTimeout(() => {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        }, 3000);
-    }
+//         // Hide navigation after 3 seconds of no scrolling
+//         scrollTimeout = setTimeout(() => {
+//             navMenu.classList.remove('active');
+//             navToggle.classList.remove('active');
+//         }, 3000);
+//     }
     
-    lastScrollTop = currentScrollTop;
-});
+//     lastScrollTop = currentScrollTop;
+// });
 
 // Form submission
 const contactForm = document.querySelector('.contact-form');
