@@ -592,6 +592,17 @@ body {
   color: #fff !important;
   opacity: 1 !important;
   border-radius: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 2rem !important;
+}
+
+.work-item .work-overlay {
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 @media (max-width: 900px) {
@@ -600,6 +611,12 @@ body {
     color: #fff !important;
     opacity: 1 !important;
     border-radius: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 2rem !important;
   }
   .work-showcase .work-item .work-preview .work-image {
     display: none !important;
