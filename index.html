@@ -8,12 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript">
+    <!-- Quitar EmailJS v3 y su inicialización antigua -->
+    <!-- <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script> -->
+    <!-- <script type="text/javascript">
        (function(){
           emailjs.init('vJWS9-xxIjLpgqETA');
        })();
-    </script>
+    </script> -->
+    <!-- Agregar EmailJS v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
     <!-- Custom Cursor -->
@@ -144,18 +147,39 @@
                     <h2 class="section-title" data-i18n="work_title">Proyectos Desarrollados</h2>
                     <p class="section-subtitle" data-i18n="work_subtitle">Proyectos que definen nuestro enfoque</p>
                 </div>
-                <div class="cards-container">
-  <div class="card">
-    <h3>Planificación de la producción</h3>
-    <p>Herramienta del mercado alineada con las necesidades del usuario</p>
+                <div class="work-showcase">
+  <div class="work-item">
+    <div class="work-preview">
+      <div class="work-image" style="background-image: url('img/proyecto1.jpg');"></div>
+      <div class="work-overlay">
+        <div class="work-details">
+          <h3>Planificación de la producción</h3>
+          <p>Herramienta del mercado alineada con las necesidades del usuario</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="card">
-    <h3>Financiera</h3>
-    <p>Plataforma que complementó al sistema contable cubriendo las necesidades del usuario</p>
+  <div class="work-item">
+    <div class="work-preview">
+      <div class="work-image" style="background-image: url('img/proyecto2.jpg');"></div>
+      <div class="work-overlay">
+        <div class="work-details">
+          <h3>Financiera</h3>
+          <p>Plataforma que complementó al sistema contable cubriendo las necesidades del usuario</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="card">
-    <h3>Comercial/administrativa</h3>
-    <p>Plataforma con Workflow que cubre desde el inicio de la operación comercial hasta su cierre</p>
+  <div class="work-item">
+    <div class="work-preview">
+      <div class="work-image" style="background-image: url('img/proyecto3.jpg');"></div>
+      <div class="work-overlay">
+        <div class="work-details">
+          <h3>Comercial/administrativa</h3>
+          <p>Plataforma con Workflow que cubre desde el inicio de la operación comercial hasta su cierre</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
             </div>

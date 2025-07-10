@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Solipago</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .admin-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .admin-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-danger {
+            background: #ef4444;
+        }
+
+        .company-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .company-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            background: var(--bg-primary);
+        }
+
+        .company-info h4 {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .company-info p {
+            margin: 0.25rem 0 0 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Panel de Administración - Solipago</h1>
+            <p>Gestiona tus emails automatizados y propuestas empresariales</p>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="total-contacts">0</div>
+                <div class="stat-label">Contactos Totales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="total-companies">0</div>
+                <div class="stat-label">Empresas Objetivo</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="emails-sent">0</div>
+                <div class="stat-label">Emails Enviados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="success-rate">0%</div>
+                <div class="stat-label">Tasa de Éxito</div>
+            </div>
+        </div>
+
+        <div class="admin-grid">
+            <!-- Agregar Empresa Objetivo -->
+            <div class="admin-card">
+                <h3>Agregar Empresa Objetivo</h3>
+                <form id="add-company-form">
+                    <div class="form-group">
+                        <label for="company-name">Nombre de la Empresa</label>
+                        <input type="text" id="company-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company-email">Email de Contacto</label>
+                        <input type="email" id="company-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company-industry">Industria</label>
+                        <select id="company-industry" required>
+                            <option value="">Seleccionar industria</option>
+                            <option value="Manufactura">Manufactura</option>
+                            <option value="Finanzas">Finanzas</option>
+                            <option value="Comercio">Comercio</option>
+                            <option value="Servicios">Servicios</option>
+                            <option value="Tecnología">Tecnología</option>
+                            <option value="Salud">Salud</option>
+                            <option value="Educación">Educación</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="company-needs">Necesidades (separadas por comas)</label>
+                        <textarea id="company-needs"
+                            placeholder="Ej: Sistema de planificación, Optimización de procesos, Integración de sistemas"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Agregar Empresa</button>
+                </form>
+            </div>
+
+            <!-- Enviar Propuestas -->
+            <div class="admin-card">
+                <h3>Gestionar Propuestas</h3>
+                <div class="form-group">
+                    <label>Acciones Masivas</label>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <button class="btn" onclick="sendBulkProposals()">Enviar Todas las Propuestas</button>
+                        <button class="btn btn-secondary" onclick="exportCompanies()">Exportar Lista</button>
+                        <button class="btn btn-danger" onclick="clearAllCompanies()">Limpiar Lista</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Enviar Propuesta Individual</label>
+                    <select id="individual-company" style="margin-bottom: 0.5rem;">
+                        <option value="">Seleccionar empresa</option>
+                    </select>
+                    <button class="btn" onclick="sendIndividualProposal()">Enviar Propuesta</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Empresas -->
+        <div class="admin-card">
+            <h3>Empresas Objetivo</h3>
+            <div class="company-list" id="companies-list">
+                <!-- Las empresas se cargarán dinámicamente -->
+            </div>
+        </div>
+
+        <!-- Historial de Contactos -->
+        <div class="admin-card">
+            <h3>Historial de Contactos</h3>
+            <div class="company-list" id="contacts-list">
+                <!-- Los contactos se cargarán dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script src="email-config.js"></script>
+    <script src="email-service.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Cargar datos al iniciar
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+            loadCompanies();
+            loadContacts();
+        });
+
+        // Formulario para agregar empresa
+        document.getElementById('add-company-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const companyData = {
+                name: document.getElementById('company-name').value,
+                email: document.getElementById('company-email').value,
+                industry: document.getElementById('company-industry').value,
+                needs: document.getElementById('company-needs').value.split(',').map(n => n.trim()).filter(n => n)
+            };
+
+            addTargetCompany(companyData);
+            document.getElementById('add-company-form').reset();
+            loadCompanies();
+            loadStats();
+        });
+
+        function loadStats() {
+            const contacts = JSON.parse(localStorage.getItem('solipago_contacts') || '[]');
+            const companies = JSON.parse(localStorage.getItem('solipago_target_companies') || '[]');
+
+            document.getElementById('total-contacts').textContent = contacts.length;
+            document.getElementById('total-companies').textContent = companies.length;
+
+            // Simular estadísticas de emails (en un sistema real esto vendría de una base de datos)
+            const emailsSent = Math.floor(Math.random() * 50) + 10;
+            const successRate = Math.floor(Math.random() * 30) + 70;
+
+            document.getElementById('emails-sent').textContent = emailsSent;
+            document.getElementById('success-rate').textContent = successRate + '%';
+        }
+
+        function loadCompanies() {
+            const companies = getTargetCompanies();
+            const container = document.getElementById('companies-list');
+            const select = document.getElementById('individual-company');
+
+            container.innerHTML = '';
+            select.innerHTML = '<option value="">Seleccionar empresa</option>';
+
+            companies.forEach(company => {
+                // Agregar a la lista
+                const item = document.createElement('div');
+                item.className = 'company-item';
+                item.innerHTML = `
+                    <div class="company-info">
+                        <h4>${company.name}</h4>
+                        <p>${company.email} • ${company.industry}</p>
+                        <p>Necesidades: ${company.needs.join(', ')}</p>
+                    </div>
+                    <div>
+                        <button class="btn" onclick="sendBusinessProposal(${JSON.stringify(company)})">Enviar</button>
+                        <button class="btn btn-danger" onclick="removeTargetCompany(${company.id})">Eliminar</button>
+                    </div>
+                `;
+                container.appendChild(item);
+
+                // Agregar al select
+                const option = document.createElement('option');
+                option.value = company.id;
+                option.textContent = company.name;
+                select.appendChild(option);
+            });
+        }
+
+        function loadContacts() {
+            const contacts = JSON.parse(localStorage.getItem('solipago_contacts') || '[]');
+            const container = document.getElementById('contacts-list');
+
+            container.innerHTML = '';
+
+            contacts.forEach(contact => {
+                const item = document.createElement('div');
+                item.className = 'company-item';
+                item.innerHTML = `
+                    <div class="company-info">
+                        <h4>${contact.name}</h4>
+                        <p>${contact.email}</p>
+                        <p>Mensaje: ${contact.message.substring(0, 100)}...</p>
+                        <p>Fecha: ${new Date(contact.date).toLocaleDateString()}</p>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function sendIndividualProposal() {
+            const companyId = document.getElementById('individual-company').value;
+            if (!companyId) {
+                showNotification('Selecciona una empresa', 'error');
+                return;
+            }
+
+            const companies = getTargetCompanies();
+            const company = companies.find(c => c.id == companyId);
+
+            if (company) {
+                sendBusinessProposal(company);
+            }
+        }
+
+        function exportCompanies() {
+            const companies = getTargetCompanies();
+            const dataStr = JSON.stringify(companies, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'empresas-objetivo.json';
+            link.click();
+
+            showNotification('Lista exportada correctamente', 'success');
+        }
+
+        function clearAllCompanies() {
+            if (confirm('¿Estás seguro de que quieres eliminar todas las empresas de la lista?')) {
+                localStorage.removeItem('solipago_target_companies');
+                loadCompanies();
+                loadStats();
+                showNotification('Lista de empresas limpiada', 'success');
+            }
+        }
+    </script>
+</body>
+
+</html>
