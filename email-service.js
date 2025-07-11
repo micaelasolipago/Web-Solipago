@@ -84,18 +84,18 @@ class EmailService {
         try {
             const templateParams = {
                 to_name: companyData.name,
-                to_email: companyData.email,
+                company_name: companyData.name, // Nombre de la empresa
+                industry: companyData.industry, // Industria
+                needs: companyData.needs.join(', '), // Necesidades
+                message: companyData.message, // Mensaje personalizado
                 from_name: 'Micaela - Solipago',
-                from_email: EMAIL_CONFIG.contactEmail,
-                company_name: companyData.name,
-                industry: companyData.industry,
-                needs: companyData.needs.join(', '),
-                reply_to: EMAIL_CONFIG.contactEmail
+                from_email: 'tuemail@solipago.com',
+                reply_to: 'tuemail@solipago.com'
             };
 
             const response = await emailjs.send(
-                EMAIL_CONFIG.serviceId,
-                EMAIL_CONFIG.templates.businessProposal,
+                'service_xxxxx',      // <-- Tu Service ID de EmailJS
+                'template_abc123',    // <-- Tu Template ID de EmailJS
                 templateParams
             );
 
