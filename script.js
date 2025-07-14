@@ -151,4 +151,43 @@ animatedItems.forEach(item => {
     item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(item);
 });
+
+// Cookie Banner Functionality
+const cookieBanner = document.getElementById('cookie-banner');
+const acceptCookiesBtn = document.getElementById('accept-cookies');
+const rejectCookiesBtn = document.getElementById('reject-cookies');
+
+// Check if user has already made a choice
+const cookieChoice = localStorage.getItem('cookieChoice');
+
+if (!cookieChoice && cookieBanner) {
+    // Show banner after a short delay
+    setTimeout(() => {
+        cookieBanner.classList.add('show');
+    }, 1000);
+}
+
+// Accept cookies
+if (acceptCookiesBtn) {
+    acceptCookiesBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieChoice', 'accepted');
+        localStorage.setItem('cookiesAccepted', 'true');
+        cookieBanner.classList.remove('show');
+        
+        // Optional: Enable analytics or other tracking
+        console.log('Cookies accepted');
+    });
+}
+
+// Reject cookies
+if (rejectCookiesBtn) {
+    rejectCookiesBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieChoice', 'rejected');
+        localStorage.setItem('cookiesAccepted', 'false');
+        cookieBanner.classList.remove('show');
+        
+        // Optional: Disable analytics or other tracking
+        console.log('Cookies rejected');
+    });
+}
 }); 
