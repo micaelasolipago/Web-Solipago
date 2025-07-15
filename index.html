@@ -17,6 +17,21 @@
     </script> -->
     <!-- Agregar EmailJS v4 -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      function loadGoogleAnalytics() {
+        if (window.gaLoaded) return;
+        window.gaLoaded = true;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-7V2FMX5E6V'; // <-- PON TU ID AQUÍ
+        document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-7V2FMX5E6V'); // <-- PON TU ID AQUÍ
+      }
+    </script>
 </head>
 <body>
     <!-- Cookie Consent Banner -->
@@ -365,6 +380,34 @@ function enviarMailsGoogle() {
     }, idx * 2000); // Espera 2 segundos entre cada envío
   });
 }
+
+// Banner de cookies
+const acceptBtn = document.getElementById('accept-cookies');
+const rejectBtn = document.getElementById('reject-cookies');
+const cookieBanner = document.getElementById('cookie-banner');
+
+acceptBtn.addEventListener('click', function() {
+  cookieBanner.style.display = 'none';
+  localStorage.setItem('cookieConsent', 'true');
+  loadGoogleAnalytics();
+});
+
+rejectBtn.addEventListener('click', function() {
+  cookieBanner.style.display = 'none';
+  localStorage.setItem('cookieConsent', 'false');
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+  const consent = localStorage.getItem('cookieConsent');
+  if (consent === 'true') {
+    cookieBanner.style.display = 'none';
+    loadGoogleAnalytics();
+  } else if (consent === 'false') {
+    cookieBanner.style.display = 'none';
+  } else {
+    cookieBanner.style.display = 'block';
+  }
+});
 </script>
   </body>
 </html> 
