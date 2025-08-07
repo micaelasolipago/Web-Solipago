@@ -50,10 +50,10 @@ if (themeToggle) {
     const themeIcon = themeToggle.querySelector('.theme-icon');
     const html = document.documentElement;
 
-    // Set initial theme based on user preference or default to light (like Deevty)
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    // Set initial theme based on user preference or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     html.setAttribute('data-theme', savedTheme);
-    themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
 
     themeToggle.addEventListener('click', () => {
         const currentTheme = html.getAttribute('data-theme');
@@ -64,7 +64,7 @@ if (themeToggle) {
         
         setTimeout(() => {
             html.setAttribute('data-theme', newTheme);
-            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
             localStorage.setItem('theme', newTheme);
             
             // Reset rotation
