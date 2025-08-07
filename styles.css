@@ -289,7 +289,35 @@ body::before {
 
 /* CSS Variables - Minimalist 3D Design System (Deevty + 3D) */
 :root {
-    /* Dark Theme (Default - like Deevty with 3D) */
+    /* Light Theme (Default - like Deevty with 3D) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #fafafa;
+    --bg-tertiary: #f5f5f5;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --accent-primary: #1a1a1a;
+    --accent-secondary: #333333;
+    --border-color: #e5e5e5;
+    --border-light: #f0f0f0;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --shadow-light: rgba(0, 0, 0, 0.04);
+    --shadow-dark: rgba(0, 0, 0, 0.12);
+    --shadow-3d: rgba(0, 0, 0, 0.1);
+    --gradient-primary: linear-gradient(135deg, #1a1a1a, #333333);
+    --gradient-secondary: linear-gradient(135deg, #333333, #666666);
+    --gradient-accent: linear-gradient(135deg, #1a1a1a, #666666);
+    --glow-color: rgba(0, 0, 0, 0.05);
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --hover-color: #f8f8f8;
+    --depth-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --depth-medium: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --depth-heavy: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] {
+    /* Dark Theme (Alternative) */
     --bg-primary: #0a0a0a;
     --bg-secondary: #1a1a1a;
     --bg-tertiary: #2a2a2a;
@@ -314,70 +342,6 @@ body::before {
     --depth-light: 0 2px 8px rgba(0, 0, 0, 0.3);
     --depth-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
     --depth-heavy: 0 8px 32px rgba(0, 0, 0, 0.5);
-}
-
-[data-theme="dark"] {
-    /* Light Theme (Alternative) */
-    --bg-primary: #ffffff;
-    --bg-secondary: #fafafa;
-    --bg-tertiary: #f5f5f5;
-    --text-primary: #1a1a1a;
-    --text-secondary: #666666;
-    --text-tertiary: #999999;
-    --accent-primary: #1a1a1a;
-    --accent-secondary: #333333;
-    --border-color: #e5e5e5;
-    --border-light: #f0f0f0;
-    --shadow-color: rgba(0, 0, 0, 0.08);
-    --shadow-light: rgba(0, 0, 0, 0.04);
-    --shadow-dark: rgba(0, 0, 0, 0.12);
-    --gradient-primary: linear-gradient(135deg, #1a1a1a, #333333);
-    --gradient-secondary: linear-gradient(135deg, #333333, #666666);
-    --gradient-accent: linear-gradient(135deg, #1a1a1a, #666666);
-    --glow-color: rgba(0, 0, 0, 0.05);
-    --glass-bg: rgba(255, 255, 255, 0.9);
-    --glass-border: rgba(0, 0, 0, 0.1);
-    --hover-color: #f8f8f8;
-}
-
-[data-theme="light"] body {
-    background: #ffffff !important;
-    color: #1a1a1a !important;
-}
-
-[data-theme="light"] .nav {
-    background: rgba(255,255,255,0.95) !important;
-}
-
-[data-theme="light"] .brand-text,
-[data-theme="light"] .nav-item,
-[data-theme="light"] .section-title,
-[data-theme="light"] .detail-value,
-[data-theme="light"] .footer-links a,
-[data-theme="light"] .footer-social a {
-    color: #1a1a1a !important;
-}
-
-[data-theme="light"] .hero-description,
-[data-theme="light"] .section-subtitle,
-[data-theme="light"] .detail-label,
-[data-theme="light"] .footer-bottom {
-    color: #6b7280 !important;
-}
-
-[data-theme="light"] .craft-item,
-[data-theme="light"] .work-item {
-    background: #f8f9fa !important;
-    border-color: #e5e7eb !important;
-}
-
-[data-theme="light"] .connect {
-    background: #f8f9fa !important;
-}
-
-[data-theme="light"] .footer {
-    background: #ffffff !important;
-    border-top: 1px solid #e5e7eb !important;
 }
 
 /* Custom Cursor - Minimalist 3D Style (Deevty + 3D) */
